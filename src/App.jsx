@@ -122,16 +122,19 @@ function App() {
         </nav>
       </motion.div>
 
-      {/* HERO SECTION - Minimal */}
+      {/* HERO SECTION - Video Background */}
       <section ref={heroRef} className="relative h-screen overflow-hidden">
         <motion.div 
           style={{ scale: heroScale, opacity: heroOpacity }}
           className="absolute inset-0"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-            alt="Architecture"
-            className="w-full h-full object-cover"
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-video-1769636498.mp4?"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         </motion.div>
