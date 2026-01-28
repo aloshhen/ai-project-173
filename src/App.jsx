@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Menu, X, Mail, MapPin, Instagram, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
 
