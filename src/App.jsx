@@ -1,10 +1,12 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Menu, X, Mail, MapPin, Instagram, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
+import Lottie from 'lottie-react'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [currentProject, setCurrentProject] = useState(0)
+  const [animData, setAnimData] = useState(null)
   
   const heroRef = useRef(null)
   const philosophyRef = useRef(null)
@@ -24,6 +26,13 @@ function App() {
   
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3])
+
+  useEffect(() => {
+    fetch('https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-lottie-1769638457.lottie?')
+      .then(r => r.json())
+      .then(setAnimData)
+      .catch(err => console.error('Failed to load Lottie animation:', err))
+  }, [])
 
   const featuredProjects = [
     {
@@ -151,14 +160,33 @@ function App() {
         </div>
       </section>
 
-      {/* PHILOSOPHY/MANIFESTO */}
+      {/* PHILOSOPHY/MANIFESTO with Lottie Animation */}
       <section id="philosophy" ref={philosophyRef} className="min-h-screen flex items-center px-8 md:px-16 py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-8">
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: philosophyInView ? 1 : 0, y: philosophyInView ? 0 : 60 }}
             transition={{ duration: 1 }}
-            className="col-span-12 md:col-start-7 md:col-span-6"
+            className="col-span-12 md:col-span-5 flex items-center justify-center"
+          >
+            {animData ? (
+              <Lottie 
+                animationData={animData} 
+                loop 
+                className="w-full max-w-md h-auto"
+              />
+            ) : (
+              <div className="w-full max-w-md h-96 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-600"></div>
+              </div>
+            )}
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: philosophyInView ? 1 : 0, y: philosophyInView ? 0 : 60 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="col-span-12 md:col-span-7 flex items-center"
           >
             <div className="space-y-12">
               <p className="text-xl md:text-3xl font-thin leading-relaxed tracking-tight text-gray-400">
