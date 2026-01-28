@@ -134,7 +134,7 @@ function App() {
             muted 
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-video-1769636498.mp4?"
+            src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-video-1769636840.mp4?"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         </motion.div>
