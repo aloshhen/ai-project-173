@@ -123,19 +123,18 @@ function App() {
         </nav>
       </motion.div>
 
-      {/* HERO SECTION - Video Background */}
+      {/* HERO SECTION - Vimeo Video Background */}
       <section ref={heroRef} className="relative h-screen overflow-hidden">
         <motion.div 
           style={{ scale: heroScale, opacity: heroOpacity }}
           className="absolute inset-0"
         >
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-video-1769636840.mp4?"
+          <iframe 
+            title="vimeo-player" 
+            src="https://player.vimeo.com/video/1150530803?h=db56b5ddc7&autoplay=1&loop=1&muted=1&background=1" 
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            style={{ width: '100vw', height: '100vh', border: 'none' }}
+            allow="autoplay; fullscreen; picture-in-picture"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         </motion.div>
@@ -152,7 +151,7 @@ function App() {
         </div>
       </section>
 
-      {/* PHILOSOPHY/MANIFESTO with Lottie Animation */}
+      {/* PHILOSOPHY/MANIFESTO with New Lottie Animation */}
       <section id="philosophy" ref={philosophyRef} className="min-h-screen flex items-center px-8 md:px-16 py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-12 gap-8">
           <motion.div 
@@ -162,7 +161,7 @@ function App() {
             className="col-span-12 md:col-span-5 flex items-center justify-center"
           >
             <DotLottieReact 
-              src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-lottie-1769679293.lottie?" 
+              src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-lottie-1769679711.lottie?" 
               loop 
               autoplay 
               className="w-full max-w-md h-auto"
@@ -339,7 +338,7 @@ function App() {
         </motion.div>
       </section>
 
-      {/* CONTACT - Minimal and Strict */}
+      {/* CONTACT - Minimal and Strict with SVG Logo */}
       <section id="contact" className="min-h-screen flex items-center px-8 md:px-16 py-32">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-12 gap-16">
@@ -378,7 +377,12 @@ function App() {
             </div>
           </div>
 
-          <div className="mt-32 pt-8 border-t border-gray-900">
+          <div className="mt-32 pt-8 border-t border-gray-900 flex flex-col md:flex-row items-center justify-between gap-8">
+            <img 
+              src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-photo-1769679763.svg?" 
+              alt="Studio Logo" 
+              className="h-12 w-auto opacity-60"
+            />
             <p className="text-xs font-light tracking-wider text-gray-600">
               © 2024 ARCHITECTURAL BUREAU. ALL RIGHTS RESERVED.
             </p>
