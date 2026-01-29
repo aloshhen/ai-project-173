@@ -1,12 +1,11 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Menu, X, Mail, MapPin, Instagram, Linkedin, ChevronLeft, ChevronRight } from 'lucide-react'
-import Lottie from 'lottie-react'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [currentProject, setCurrentProject] = useState(0)
-  const [animData, setAnimData] = useState(null)
   
   const heroRef = useRef(null)
   const philosophyRef = useRef(null)
@@ -26,13 +25,6 @@ function App() {
   
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3])
-
-  useEffect(() => {
-    fetch('https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-lottie-1769638457.lottie?')
-      .then(r => r.json())
-      .then(setAnimData)
-      .catch(err => console.error('Failed to load Lottie animation:', err))
-  }, [])
 
   const featuredProjects = [
     {
@@ -169,17 +161,12 @@ function App() {
             transition={{ duration: 1 }}
             className="col-span-12 md:col-span-5 flex items-center justify-center"
           >
-            {animData ? (
-              <Lottie 
-                animationData={animData} 
-                loop 
-                className="w-full max-w-md h-auto"
-              />
-            ) : (
-              <div className="w-full max-w-md h-96 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-600"></div>
-              </div>
-            )}
+            <DotLottieReact 
+              src="https://oejgkvftpbinliuopipr.supabase.co/storage/v1/object/public/assets/user_347995964/edit-lottie-1769679293.lottie?" 
+              loop 
+              autoplay 
+              className="w-full max-w-md h-auto"
+            />
           </motion.div>
           
           <motion.div 
